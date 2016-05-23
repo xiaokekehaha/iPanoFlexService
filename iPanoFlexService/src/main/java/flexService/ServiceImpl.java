@@ -18,5 +18,5 @@ public class ServiceImpl {
 		Point point = new Point(lon, lat);
 		pointDao.insertPoint(id, point);
 	}
-
+	
 }

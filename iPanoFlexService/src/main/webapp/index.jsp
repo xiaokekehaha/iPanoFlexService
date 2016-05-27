@@ -14,7 +14,7 @@
 	attributes.id = "3d";
 	attributes.name = "3d";
 	attributes.align = "middle";
-	swfobject.embedSWF("swf/3d.swf?conf=http://localhost:8080/iPanoFlexService/getconf?id=flashtest", "flashContent",
+	swfobject.embedSWF("swf/3d.swf?xml=getconf?id=0085423", "flashContent",
 			"700", "400", swfVersionStr, xiSwfUrlStr, flashvars, params,
 			attributes);
 </script>

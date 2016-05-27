@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,8 +17,10 @@ import dao.ConfDao;
 public class ServiceImpl extends HttpServlet{
 
 	public static ApplicationContext context;
+	public static Logger logger = null;
 	static{
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		logger = Logger.getLogger(ServiceImpl.class);
 	}
 	
 	private String getConf(String id){
@@ -30,7 +33,7 @@ public class ServiceImpl extends HttpServlet{
 
 		String id = req.getParameter("id");
 		String confjson = getConf(id);
-		System.out.println("获取配置文件 id: 　" + id);
+		logger.info(" " + " getconf " + id);
 		OutputStream outputStream = resp.getOutputStream();
 		outputStream.write(confjson.getBytes());
 	}

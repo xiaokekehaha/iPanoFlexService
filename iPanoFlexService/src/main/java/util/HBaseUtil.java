@@ -19,6 +19,15 @@ public class HBaseUtil {
 	static Logger logger = Logger.getLogger(HBaseUtil.class.getName());
 	
 	private String zkQuorum;
+	private String zkMaster;
+	public String getZkMaster() {
+		return zkMaster;
+	}
+
+	public void setZkMaster(String zkMaster) {
+		this.zkMaster = zkMaster;
+	}
+
 	private int hTablePoolSize;
 	private HTablePool TABLE_POOL;
 	static Configuration conf = null;
@@ -52,6 +61,7 @@ public class HBaseUtil {
 	public void init(){
 		conf = HBaseConfiguration.create();
 		conf.set("hbase-zookeeper.quorum", zkQuorum);
+		conf.set("hbase.zookeeper.master", zkMaster);
 		TABLE_POOL = new HTablePool(conf, hTablePoolSize);
 	}
 	

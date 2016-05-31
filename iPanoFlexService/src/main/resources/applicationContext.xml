@@ -14,6 +14,7 @@
 	<!-- HBase 装配辅助类 -->
 	<bean id="hBaseUtil" class="util.HBaseUtil" init-method="init">
 		<property name="zkQuorum" value="${hbase.zookeeper.quorum}"></property>
+		<property name="zkMaster" value="${hbase.zookeeper.master}"></property>
 		<property name="hTablePoolSize" value="${htablepoolsize}"></property>
 	</bean>
 

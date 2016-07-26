@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.ConfDao;
@@ -29,11 +30,16 @@ public class ConService {
 	 * @return
 	 */
 	@RequestMapping(value = "getconf/{id}", method = RequestMethod.GET)
-	public @ResponseBody Conf getConf(@PathVariable String id){
+	public @ResponseBody String getConf(@PathVariable String id, @RequestParam(value="callback", required=false) String callbackFunc){
 		ConfDao confDao = (ConfDao)ctx.getBean("confDao");
 		Conf conf = new Conf();
 		conf = confDao.getConfById(id);
 		logger.info(" - " + " getconf " + " get unsys conf success ");
-		return conf;
+		if (callbackFunc != null){
+			String rString = callbackFunc + "(" + conf.toJson() + ")";
+			return rString;
+		}
+		else 
+			return conf.toJson();
 	}
 }

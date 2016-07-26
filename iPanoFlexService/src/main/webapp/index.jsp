@@ -14,7 +14,7 @@
 	attributes.id = "3d";
 	attributes.name = "3d";
 	attributes.align = "middle";
-	swfobject.embedSWF("swf/3d.swf?xml=getconf/0324259", "flashContent",
+	swfobject.embedSWF("swf/3d.swf?xml=getconf/04888882", "flashContent",
 			"700", "400", swfVersionStr, xiSwfUrlStr, flashvars, params,
 			attributes);
 </script>
